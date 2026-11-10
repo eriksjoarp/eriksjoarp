@@ -14,8 +14,9 @@ stock eager PyTorch      ██                                47 seed-steps/s
 + seeds vectorized       ████████████████████████████████████████  962
 ```
 
-No new hardware, no new math: just remove every host sync, capture the whole step in one CUDA
-graph, and train several seeds in one batched graph. A bigger GPU wouldn't have helped: the GPU
+No new hardware, no new math: remove every host sync, compute the metrics on the GPU as training
+goes (accumulated in device buffers, no per-step copies to the CPU), capture the whole step in one
+CUDA graph, and train several seeds in one batched graph. A bigger GPU wouldn't have helped: the GPU
 was mostly waiting for Python.
 
 ### 🔧 Currently
