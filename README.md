@@ -1,22 +1,14 @@
 # Erik Westring
 
-Research engineer. Fifteen years at research institutes, the last three in AI, which is moving
-faster than anything I've worked on and I love it. At home I run a desk cluster (three GPUs, one
-desk): tuning models, chasing microseconds and staring at Nsight timelines, mostly to find out
-what the GPU is waiting for.
+15 years in research, 3 in AI. I make AI faster on a "desk cluster" of three GPUs, mostly by
+asking it what it's waiting for. Usually it's Python.
 
-Usually it's Python. A tiny transformer learning modular arithmetic, one RTX 4090, same training
-loop throughout (seed-steps/s):
+* Training **22× faster** on the same GPU. Same math, less waiting
+* A **27B model on one RTX 5090** with vLLM, 16 users, 200+ local patches. 1,000+ ideas tried,
+  100 kept
+* Small models that **grok 18× sooner** (paper on the way)
+* My own AI crew: a code reviewer, a bug hunter and a RAG engine that keep quality high
+  and caffeine low
+* Coding agents that write code I'd actually merge
 
-```
-plain PyTorch                      47   GPU mostly idle, politely waiting
-CUDA graph, no host syncs         279
-all seeds in one graph            962
-async checkpoints                1042   ~22x, same card, same math
-```
-
-Currently: a 27B model, one RTX 5090, vLLM, and a strong opinion about every millisecond in the
-decode step. Bugs found along the way go upstream, e.g.
-[flashinfer#9324](https://github.com/flashinfer-ai/flashinfer/pull/9324).
-
-Off the keyboard: skiing on sunny days, travelling (42 countries, still counting).
+Skier on sunny days. 42 countries and counting.
