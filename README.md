@@ -1,19 +1,22 @@
-# Hi, I'm Erik 👋
+# Erik Westring
 
-Research engineer, 15 years in research institutes, the last 3 in AI. I make models run fast on
-desk-sized GPUs.
+Research engineer. Fifteen years at research institutes, the last three in AI, which is moving
+faster than anything I've worked on and I love it. At home I run a desk cluster (three GPUs, one
+desk): tuning models, chasing microseconds and staring at Nsight timelines, mostly to find out
+what the GPU is waiting for.
 
-Same tiny transformer, same training loop, one RTX 4090 (seed-steps/s):
+Usually it's Python. A tiny transformer learning modular arithmetic, one RTX 4090, same training
+loop throughout (seed-steps/s):
 
 ```
-stock eager PyTorch                          █                                 47
-+ no host syncs, on-GPU metrics, CUDA graph  ████████                         279
-+ seeds batched in one graph                 ████████████████████████████     962
-+ async checkpoints and metric flush         ██████████████████████████████  1042   ~22×
+plain PyTorch                      47   GPU mostly idle, politely waiting
+CUDA graph, no host syncs         279
+all seeds in one graph            962
+async checkpoints                1042   ~22x, same card, same math
 ```
 
-The GPU was mostly waiting for Python.
+Currently: a 27B model, one RTX 5090, vLLM, and a strong opinion about every millisecond in the
+decode step. Bugs found along the way go upstream, e.g.
+[flashinfer#9324](https://github.com/flashinfer-ai/flashinfer/pull/9324).
 
-**Now:** a 27B model on one RTX 5090 with vLLM and FlashInfer: speculative decoding, FP8/NVFP4 KV.
-**Upstream:** [flashinfer#9324](https://github.com/flashinfer-ai/flashinfer/pull/9324)
-**Off the keyboard:** skiing sunny slopes · snowy mountains · 42 countries
+Off the keyboard: skiing on sunny days, travelling (42 countries, still counting).
