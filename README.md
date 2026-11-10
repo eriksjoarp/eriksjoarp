@@ -5,10 +5,11 @@ fast on hardware you can put under a desk, and then skiing it off on a sunny, sp
 
 ### ⚡ Favourite speedup: same GPU, same model, ~20× faster training
 
-A tiny transformer (228K params) learning modular arithmetic, on one RTX 4090:
+A tiny transformer (228K params) learning modular arithmetic, on one RTX 4090. Same training
+loop, same metrics, stock PyTorch vs tuned:
 
 ```
-eager PyTorch            ██                                47 seed-steps/s
+stock eager PyTorch      ██                                47 seed-steps/s
 + CUDA graph, no syncs   ███████████▊                     279
 + seeds vectorized       ████████████████████████████████████████  962
 ```
